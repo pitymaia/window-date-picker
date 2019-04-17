@@ -92,10 +92,10 @@ export default class WindowDatePicker {
                         <span></span>
                         <div>
                             <div>
-                                ${this.renderUpIcon()}
+                                ${this.renderDownIcon()}
                             </div>
                             <div>
-                                ${this.renderDownIcon()}
+                                ${this.renderUpIcon()}
                             </div>
                         </div>
                     </div>
@@ -144,13 +144,13 @@ export default class WindowDatePicker {
             Util.addEventListener(
                 this.els.body.querySelector('.wdp-date-header > div > div:first-child > svg'),
                 [Util.MOUSE_DOWN],
-                this.orientation ? this.increaseDateValue : this.decreaseDateValue
+                this.showArrowButtons ? this.decreaseDateValue : !this.orientation ? this.increaseDateValue : this.decreaseDateValue
             );
 
             Util.addEventListener(
                 this.els.body.querySelector('.wdp-date-header > div > div:last-child svg'),
                 [Util.MOUSE_DOWN],
-                !this.orientation ? this.increaseDateValue : this.decreaseDateValue
+                this.showArrowButtons ? this.increaseDateValue : this.orientation ? this.increaseDateValue : this.decreaseDateValue
             );
             
             this.els.weekBody = this.el.querySelector('.wdp-date-container .wdp-date-body .wdp-week-body')
