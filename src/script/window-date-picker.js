@@ -1,8 +1,8 @@
-import Util from './util';
-import * as T from './types';
-import DEFAULT_OPTIONS from './default-options';
-import EN from './lang';
-import * as EVENTS from './events';
+import Util from './util.js';
+import * as T from './types.js';
+import DEFAULT_OPTIONS from './default-options.js';
+import EN from './lang.js';
+import * as EVENTS from './events.js';
 
 export default class WindowDatePicker {
     /**
@@ -119,7 +119,7 @@ export default class WindowDatePicker {
                     </div>
                 </div>
             `;
-            
+
             this.els.dateContainer = this.el.querySelector('.wdp-date-container');
             this.els.weekContainer = this.el.querySelector('.wdp-week-container');
             this.els.dateSpan = this.el.querySelector('.wdp-date-container .wdp-date-header span');
@@ -137,7 +137,7 @@ export default class WindowDatePicker {
                     }
                 }
             )
-            
+
             this.increaseDateValue = this.increaseDateValue.bind(this);
             this.decreaseDateValue = this.decreaseDateValue.bind(this);
 
@@ -152,7 +152,7 @@ export default class WindowDatePicker {
                 [Util.MOUSE_DOWN],
                 this.showArrowButtons ? this.increaseDateValue : this.orientation ? this.increaseDateValue : this.decreaseDateValue
             );
-            
+
             this.els.weekBody = this.el.querySelector('.wdp-date-container .wdp-date-body .wdp-week-body')
             this.renderMonth();
             this.setActiveDayClass();
@@ -281,8 +281,8 @@ export default class WindowDatePicker {
                 this.els.hourContainer.classList.add('wdp-d-none');
                 this.els.pageToggle = this.el.querySelector('.wdp-header > div > div:first-child');
                 this.els.pageToggle.innerHTML = `
-                    <svg width="16" height="16" viewBox="0 0 1792 1792" class="wdp-non-opaque"><path d="M192 1664h1408v-1024h-1408v1024zm384-1216v-288q0-14-9-23t-23-9h-64q-14 0-23 9t-9 23v288q0 14 9 23t23 9h64q14 0 23-9t9-23zm768 0v-288q0-14-9-23t-23-9h-64q-14 0-23 9t-9 23v288q0 14 9 23t23 9h64q14 0 23-9t9-23zm384-64v1280q0 52-38 90t-90 38h-1408q-52 0-90-38t-38-90v-1280q0-52 38-90t90-38h128v-96q0-66 47-113t113-47h64q66 0 113 47t47 113v96h384v-96q0-66 47-113t113-47h64q66 0 113 47t47 113v96h128q52 0 90 38t38 90z"></path></svg>                    
-                    <svg width="16" height="16" viewBox="0 0 1792 1792"><path d="M1024 544v448q0 14-9 23t-23 9h-320q-14 0-23-9t-9-23v-64q0-14 9-23t23-9h224v-352q0-14 9-23t23-9h64q14 0 23 9t9 23zm416 352q0-148-73-273t-198-198-273-73-273 73-198 198-73 273 73 273 198 198 273 73 273-73 198-198 73-273zm224 0q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path></svg>       
+                    <svg width="16" height="16" viewBox="0 0 1792 1792" class="wdp-non-opaque"><path d="M192 1664h1408v-1024h-1408v1024zm384-1216v-288q0-14-9-23t-23-9h-64q-14 0-23 9t-9 23v288q0 14 9 23t23 9h64q14 0 23-9t9-23zm768 0v-288q0-14-9-23t-23-9h-64q-14 0-23 9t-9 23v288q0 14 9 23t23 9h64q14 0 23-9t9-23zm384-64v1280q0 52-38 90t-90 38h-1408q-52 0-90-38t-38-90v-1280q0-52 38-90t90-38h128v-96q0-66 47-113t113-47h64q66 0 113 47t47 113v96h384v-96q0-66 47-113t113-47h64q66 0 113 47t47 113v96h128q52 0 90 38t38 90z"></path></svg>
+                    <svg width="16" height="16" viewBox="0 0 1792 1792"><path d="M1024 544v448q0 14-9 23t-23 9h-320q-14 0-23-9t-9-23v-64q0-14 9-23t23-9h224v-352q0-14 9-23t23-9h64q14 0 23 9t9 23zm416 352q0-148-73-273t-198-198-273-73-273 73-198 198-73 273 73 273 198 198 273 73 273-73 198-198 73-273zm224 0q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"></path></svg>
                 `;
                 var icons = this.els.pageToggle.querySelectorAll('svg');
                 for(let i=0; i<icons.length; i++) {
@@ -325,7 +325,7 @@ export default class WindowDatePicker {
             Util.addEventListener(buttonsCont.querySelector('a:first-child'), [Util.MOUSE_UP], this.cancel.bind(this));
             this.els.container.appendChild(buttonsCont);
         }
-        
+
         if(this.toggleEl) {
             Util.addEventListener(this.toggleEl, [Util.MOUSE_DOWN], this.toggle);
         }
@@ -333,7 +333,7 @@ export default class WindowDatePicker {
 
     /**
      * Extracts attributes from default options.
-     * 
+     *
      * @param {Object} opt
      * @returns {Object}
      */
@@ -363,7 +363,7 @@ export default class WindowDatePicker {
             prvYear = curYear,
             nxt = cur + 1,
             nxtYear = curYear;
-        
+
         if(prv == 0) {
             prv = 12;
             prvYear -= 1;
@@ -500,14 +500,14 @@ export default class WindowDatePicker {
                 this.changeDatePage(T.YEAR);
             });
             ul.appendChild(li);
-            
+
             i += 1;
         }
     }
 
     /**
      * Renders up icon.
-     * 
+     *
      * @returns {String}
      */
     renderUpIcon() {
@@ -519,7 +519,7 @@ export default class WindowDatePicker {
 
     /**
      * Renders down icon.
-     * 
+     *
      * @returns {String}
      */
     renderDownIcon() {
@@ -624,8 +624,8 @@ export default class WindowDatePicker {
 
     /**
      * Changes date page.
-     * 
-     * @param {String} val 
+     *
+     * @param {String} val
      */
     changeDatePage(val) {
         var v = this.datePage,
@@ -655,7 +655,7 @@ export default class WindowDatePicker {
             n = this.els.yearContainer;
             if(v == T.MONTH) {
                 this.tmpYearValue = {
-                    year: this.tmpValue.year, 
+                    year: this.tmpValue.year,
                     month: this.tmpValue.month
                 };
             }
@@ -673,7 +673,7 @@ export default class WindowDatePicker {
             this.setActiveYearClass();
         }
 
-        
+
         if((v == T.MONTH && val == T.YEAR) || (v == T.YEAR && val == T.YEAR_RANGE)) {
             a = 'in';
             b = 'out';
@@ -687,8 +687,8 @@ export default class WindowDatePicker {
 
     /**
      * Attach wheel event listeners to document.
-     * 
-     * @param {Event} e 
+     *
+     * @param {Event} e
      */
     focusHoursInput(e) {
         if(e.target == this.els.hourInput) {
@@ -702,8 +702,8 @@ export default class WindowDatePicker {
 
     /**
      * Removes wheel event listeners to document.
-     * 
-     * @param {Event} e 
+     *
+     * @param {Event} e
      */
     leaveHoursInput(e) {
         if(e.target == this.els.hourInput) {
@@ -769,12 +769,12 @@ export default class WindowDatePicker {
 
     /**
      * Sets hour input according to wheel.
-     * 
-     * @param {Event} e 
+     *
+     * @param {Event} e
      */
     wheelHourInput(e) {
         var delta = ((e.deltaY || -e.wheelDelta || e.detail) >> 10) || 1;
-        
+
         if(this.orientation) {
             delta = ~delta;
         }
@@ -788,8 +788,8 @@ export default class WindowDatePicker {
 
     /**
      * Sets minute input according to wheel.
-     * 
-     * @param {Event} e 
+     *
+     * @param {Event} e
      */
     wheelMinuteInput(e) {
         var delta = ((e.deltaY || -e.wheelDelta || e.detail) >> 10) || 1;
@@ -814,7 +814,7 @@ export default class WindowDatePicker {
 
     /**
      * Returns the value.
-     * 
+     *
      * @returns {Object}
      */
     get() {
@@ -858,7 +858,7 @@ export default class WindowDatePicker {
 
     /**
      * Gets week day of an date.
-     * 
+     *
      * @param {Date} d
      * @returns {Number}
      */
@@ -873,7 +873,7 @@ export default class WindowDatePicker {
 
     /**
      * Sets value.
-     * 
+     *
      * @param {String|Number|Date} v
      */
     set(v) {
@@ -892,8 +892,8 @@ export default class WindowDatePicker {
 
     /**
      * Sets value from the given value type.
-     * 
-     * @param {String|Number|Date} v 
+     *
+     * @param {String|Number|Date} v
      * @returns {Object}
      */
     setValue(v) {
@@ -914,13 +914,13 @@ export default class WindowDatePicker {
                 }
 
                 d = `${Util.renderNumber(s[0], 4)}-${Util.renderNumber(s[1])}-${Util.renderNumber(s[2])}`;
-            } 
-            
+            }
+
             if(this.type != T.DATE) {
                 var s = v.split(' ');
                 if(this.type == T.DATEHOUR) {
                     s.shift();
-                } 
+                }
 
                 var [hour, minute] = s[0].split(':');
                 if(this.hourType == T.$12) {
@@ -1004,7 +1004,7 @@ export default class WindowDatePicker {
 
     /**
      * Sets the selected day.
-     * 
+     *
      * @param {Number} day
      * @param {Number} month
      * @param {Number} year
@@ -1054,7 +1054,7 @@ export default class WindowDatePicker {
 
     /**
      * Sets temporary month.
-     * 
+     *
      * @param {Number} month
      * @param {Number} year
      */
@@ -1070,8 +1070,8 @@ export default class WindowDatePicker {
 
     /**
      * Sets temporary year.
-     * 
-     * @param {Number} year 
+     *
+     * @param {Number} year
      */
     setTmpYear(year) {
         this.tmpYearValue.year = year;
@@ -1096,7 +1096,7 @@ export default class WindowDatePicker {
 
     /**
      * Sets temporary year range.
-     * 
+     *
      * @param {Number} start
      */
     setTmpYearRange(start) {
@@ -1123,9 +1123,9 @@ export default class WindowDatePicker {
 
     /**
      * Sets hour.
-     * 
-     * @param {Number} hour 
-     * @param {Boolean} input 
+     *
+     * @param {Number} hour
+     * @param {Boolean} input
      * @param {Boolean} txt
      */
     setHour(hour, input=true, txt=true) {
@@ -1143,10 +1143,10 @@ export default class WindowDatePicker {
         if(this.hourType == T.$12) {
             if(hour <= 0) {
                hour = 12;
-               this.setAM(!this.value.am, true, false); 
+               this.setAM(!this.value.am, true, false);
             } else if(hour >= 13) {
                 hour = 1;
-                this.setAM(!this.value.am, true, false); 
+                this.setAM(!this.value.am, true, false);
             }
         } else {
             if(hour <= -1) {
@@ -1170,10 +1170,10 @@ export default class WindowDatePicker {
 
     /**
      * Sets minute.
-     * 
-     * @param {Number} minute 
-     * @param {Boolean} input 
-     * @param {Boolean} txt 
+     *
+     * @param {Number} minute
+     * @param {Boolean} input
+     * @param {Boolean} txt
      */
     setMinute(minute, input=true, txt=true) {
         this.resetDate();
@@ -1209,10 +1209,10 @@ export default class WindowDatePicker {
 
     /**
      * Sets am/pm.
-     * 
-     * @param {Boolean} am 
-     * @param {Boolean} input 
-     * @param {Boolean} txt 
+     *
+     * @param {Boolean} am
+     * @param {Boolean} input
+     * @param {Boolean} txt
      */
     setAM(am, input=true, txt=true) {
         this.resetDate();
@@ -1263,8 +1263,8 @@ export default class WindowDatePicker {
                     year: d.getFullYear()
                 };
             }
-    
-            this.els.span.innerHTML = `${this.LANG.DAYS_ABBR[v.weekDay]}, ${v.day} ${this.LANG.MONTHS_ABBR[v.month]} ${v.year}`;    
+
+            this.els.span.innerHTML = `${this.LANG.DAYS_ABBR[v.weekDay]}, ${v.day} ${this.LANG.MONTHS_ABBR[v.month]} ${v.year}`;
         }
     }
 
@@ -1286,7 +1286,7 @@ export default class WindowDatePicker {
 
     /**
      * Sets page animation.
-     * 
+     *
      * @param {HTMLElement} o
      * @param {HTMLElement} n
      * @param {String} a
@@ -1335,8 +1335,8 @@ export default class WindowDatePicker {
 
         /**
      * Increases date value by one.
-     * 
-     * @params {Event} e 
+     *
+     * @params {Event} e
      */
     increaseDateValue(e) {
         e.preventDefault();
@@ -1360,7 +1360,7 @@ export default class WindowDatePicker {
 
     /**
      * Decreases date value by one.
-     * 
+     *
      * @params {Event} e
      */
     decreaseDateValue(e) {
@@ -1385,7 +1385,7 @@ export default class WindowDatePicker {
 
     /**
      * Creates day container.
-     * 
+     *
      * @returns {HTMLUListElement}
      */
     createDayCont() {
@@ -1396,7 +1396,7 @@ export default class WindowDatePicker {
 
     /**
      * Creates day element and attaches event listener.
-     * 
+     *
      * @param {Number} d
      * @param {Number} m
      * @param {Number} y
@@ -1418,8 +1418,8 @@ export default class WindowDatePicker {
 
     /**
      * Detects the target if it's the picker element, if not, closes the picker.
-     * 
-     * @param {Event} e 
+     *
+     * @param {Event} e
      */
     clickWindow(e) {
         try {
@@ -1452,7 +1452,7 @@ export default class WindowDatePicker {
 
     /**
      * Returns picker open status.
-     * 
+     *
      * @returns {Boolean}
      */
     isOpen() {
@@ -1564,7 +1564,7 @@ export default class WindowDatePicker {
 
     /**
      * Creates a new language.
-     * 
+     *
      * @param {String} name
      * @param {Object} lang
      */

@@ -1,4 +1,4 @@
-import Util from './util';
+import Util from './util.js';
 
 export const CHANGE = Util.createEvent('wdp.change');
 export const OPEN = Util.createEvent('wdp.open');
